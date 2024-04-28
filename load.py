@@ -215,7 +215,7 @@ class _PluginPrefs:
             initialdir='/',
             filetypes=filetypes)
         try:
-            with open(filename, newline='') as csvfile:
+            with open(filename, encoding='utf-8', newline='') as csvfile:
                 reader = csv.DictReader(csvfile)
                 self.__text_frame.delete('1.0', tk.END)
                 result = OrderedDict()
@@ -225,7 +225,7 @@ class _PluginPrefs:
                     system, *rest = row.values()
                     result[system] = ', '.join(rest)
                 self.__set_route(result)
-        except Exception as e:
+        except Exception as e:  # pylint: disable=broad-except
             _logger.exception('Error loading CSV file')
             tk.messagebox.showerror('Download error', f'Error loading CSV file: {e}.')
 
