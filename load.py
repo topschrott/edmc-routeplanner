@@ -22,6 +22,8 @@ from config import appname
 _plugin_name = os.path.basename(os.path.dirname(__file__))
 _logger = logging.getLogger(f'{appname}.{_plugin_name}')
 
+_VERSION = 'dev'
+
 
 def _ebgs_fetch(path, params):
     """ Fetch data and all pages from Elite BGS.
@@ -143,6 +145,9 @@ class _PluginPrefs:
         self.__text_frame.grid(column=0, columnspan=3, row=3, padx=padx, pady=pady, sticky=tk.NSEW)
         self.__text_frame.tag_configure('comment', foreground='grey')
         self.__set_route(self.systems)
+
+        version = nb.Label(frame, text=f'Version: {_VERSION}', fg='grey')
+        version.grid(column=0, columnspan=3, row=4, padx=padx, pady=pady, sticky=tk.E)
         return frame
 
     def __on_load_faction_systems(self):
