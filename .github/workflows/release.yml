@@ -1,0 +1,22 @@
+name: Release
+
+on:
+  push:
+    tags:
+    - 'v*'
+
+jobs:
+  build:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set version
+      run: |
+        sed -i "s/^_VERSION = .*/_VERSION = '${{ github.ref }}'/" load.py
+    - name: Create plugin artifact
+      run: |
+        zip RoutePlanner.zip load.py
+    - uses: ncipollo/create-release@v1
+      with:
+        artifacts: "RoutePlanner.zip"
