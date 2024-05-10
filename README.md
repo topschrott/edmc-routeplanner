@@ -1,7 +1,7 @@
 # EDMC Route Planner Plugin
 
 This plugin is for the [EDMarketConnector (EDMC)](https://github.com/EDCD/EDMarketConnector).
-It can be used to load a route from a CSV file (e.g. from [Spansh](https://spansh.co.uk/) or
+It can be used to load a route from a CSV file (e.g. from [Spansh](https://spansh.co.uk/)) or
 by loading faction systems that are outdated by more than a given number of hours.
 
 ![EDMC-RoutePlanner - Settings](https://github.com/topschrott/edmc-routeplanner/assets/25614879/26ed41dd-c202-40c0-81aa-ff4fca201fb0)
