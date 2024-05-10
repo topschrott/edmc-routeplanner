@@ -18,7 +18,7 @@ jobs:
         sed -i "s/^_VERSION = .*/_VERSION = '${{ github.ref_name }}'/" load.py
     - name: Create plugin artifact
       run: |
-        zip RoutePlanner.zip load.py
+        zip RoutePlanner.zip README.md load.py
     - uses: ncipollo/release-action@v1
       with:
         artifacts: "RoutePlanner.zip"
