@@ -6,10 +6,8 @@ import math
 import csv
 from collections import OrderedDict
 import tkinter as tk
-import tkinter.messagebox
-import tkinter.filedialog
 from datetime import datetime, timezone, timedelta
-from tkinter import ttk
+from tkinter import ttk, messagebox, filedialog
 from enum import Enum
 from typing import Optional, Dict, Any
 
@@ -174,7 +172,7 @@ class _PluginPrefs:
 
             if not route:
                 self.__text_frame.after_idle(
-                    tk.messagebox.showinfo,
+                    messagebox.showinfo,
                     'Information',
                     f'No systems to update that are older than {min_age} hours.')
                 return
@@ -197,7 +195,7 @@ class _PluginPrefs:
         except Exception as e:  # pylint: disable=broad-except
             _logger.exception('Error loading faction systems')
             self.__text_frame.after_idle(
-                tk.messagebox.showerror,
+                messagebox.showerror,
                 'Download error',
                 f'Error downloading faction systems: {e}.')
 
@@ -219,7 +217,7 @@ class _PluginPrefs:
     def __on_load_csv(self):
         """ Load systems from CSV file. """
         filetypes = (('CSV files', '*.csv'), ('Text files', '*.txt'), ('All files', '*.*'))
-        filename = tk.filedialog.askopenfilename(
+        filename = filedialog.askopenfilename(
             title='Open a file',
             initialdir='/',
             filetypes=filetypes)
@@ -238,7 +236,7 @@ class _PluginPrefs:
                 self.__set_route(result)
         except Exception as e:  # pylint: disable=broad-except
             _logger.exception('Error loading CSV file')
-            tk.messagebox.showerror('Download error', f'Error loading CSV file: {e}.')
+            messagebox.showerror('Download error', f'Error loading CSV file: {e}.')
 
     def __set_route(self, route):
         """ Write route to text field. """
