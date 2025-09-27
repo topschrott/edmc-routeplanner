@@ -124,14 +124,14 @@ class _PluginPrefs:
 
         label = nb.Label(frame, text='Faction name:')
         label.grid(column=0, row=0, padx=padx, pady=pady, sticky=tk.W)
-        entry = nb.Entry(frame, takefocus=False, textvariable=self.__faction_name_var)
+        entry = nb.EntryMenu(frame, takefocus=False, textvariable=self.__faction_name_var)
         entry.grid(column=1, row=0, padx=padx, pady=boxy, sticky=tk.EW)
         load_button = ttk.Button(frame, text='Load', command=self.__on_load_faction_systems)
         load_button.grid(column=2, row=0, padx=padx, sticky=tk.EW)
 
         label = nb.Label(frame, text='Minimum age (hours):')
         label.grid(column=0, row=1, padx=padx, pady=pady, sticky=tk.W)
-        entry = nb.Entry(frame, takefocus=False, textvariable=self.__min_age_var)
+        entry = nb.EntryMenu(frame, takefocus=False, textvariable=self.__min_age_var)
         entry.grid(column=1, row=1, padx=padx, pady=boxy, sticky=tk.EW)
 
         load_csv_button = ttk.Button(frame, text='Load from CSV', command=self.__on_load_csv)
