@@ -149,6 +149,8 @@ class _PluginPrefs:
         """ Load button for faction systems was pressed. """
         faction_name = self.__faction_name_var.get()
         min_age = self.__min_age_var.get()
+        if not faction_name or min_age < 0:
+            return
         _thread.start_new_thread(self.__load_faction_systems, (faction_name, min_age))
 
     def __load_faction_systems(self, faction_name, min_age):
@@ -216,6 +218,8 @@ class _PluginPrefs:
             title='Open a file',
             initialdir='/',
             filetypes=filetypes)
+        if not filename:
+            return
         try:
             with open(filename, encoding='utf-8', newline='') as csvfile:
                 reader = csv.DictReader(csvfile)
