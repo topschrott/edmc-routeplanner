@@ -297,11 +297,13 @@ class _PluginApp:
     def __update_next_system(self):
         """ Update UI and clipboard. """
         next_system = list(self.__systems.keys())[0] if self.__systems else ''
-        self.__label['text'] = f'{next_system} ({len(self.__systems)})'
         if next_system:
+            self.__label['text'] = f'{next_system} ({len(self.__systems)})'
             self.__label.clipboard_clear()
             self.__label.clipboard_append(next_system)
             self.__label.update()
+        else:
+            self.__label['text'] = ''
 
 
 _plugin_prefs = _PluginPrefs()
